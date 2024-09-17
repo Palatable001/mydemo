@@ -115,7 +115,7 @@ pipeline {
                         dir('MyFirstDemoWithSpring') { // Fixed directory name
                             echo "Building backend Docker image..."
                             // Ensure the target folder is present
-                            sh 'ls -al MyFirstDemoWithSpring/target/'
+                            // sh 'ls -al MyFirstDemoWithSpring/MyFirstDemoWithSpring/target/'
                             
                             // Build the Docker image
                             sh 'docker build -t palatable001/my_java_app:latest .'
