@@ -112,10 +112,10 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                        dir('MyFirstDemoWithSpring') { // Fixed directory name
+                        dir('MyFristDemoWithSpring') { // Fixed directory name
                             echo "Building backend Docker image..."
                             // Ensure the target folder is present
-                            // sh 'ls -al MyFirstDemoWithSpring/MyFirstDemoWithSpring/target/'
+                            // sh 'ls -al'
                             
                             // Build the Docker image
                             sh 'docker build -t palatable001/my_java_app:latest .'
