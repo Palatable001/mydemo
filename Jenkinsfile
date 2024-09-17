@@ -132,45 +132,45 @@ pipeline {
         //     }
         // }
 
-    //     stage('Build and Push Frontend Docker Image') {
-    //         steps {
-    //             script {
-    //                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-    //                     dir('frontend') {
-    //                         echo "Building frontend Docker image..."
-    //                         sh 'docker build -t palatable001/frontend-service:${VERSION_TAG} .'
-                            
-    //                         echo "Logging in to DockerHub..."
-    //                         sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
-                            
-    //                         echo "Pushing frontend Docker image..."
-    //                         sh "docker tag palatable001/frontend-service:${VERSION_TAG} palatable001/frontend-service:latest"
-    //                         sh "docker push palatable001/frontend-service:latest"
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-         stage('Build and Push MyFristDemoWithSpring Docker Image') {
+        stage('Build and Push Frontend Docker Image') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                        dir('MyFristDemoWithSpring') { // Fixed directory name
-                            echo "Building backend Docker image..."
-                            
-                            // Build the Docker image with the correct DockerHub username
-                            sh 'docker build -t michaeladegoke/my_java_app:latest .'
+                        dir('frontend') {
+                            echo "Building frontend Docker image..."
+                            sh 'docker build -t michaeladegoke/frontend-service:${VERSION_TAG} .'
                             
                             echo "Logging in to DockerHub..."
                             sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
                             
-                            echo "Pushing backend Docker image..."
-                            sh "docker push michaeladegoke/my_java_app:latest"
+                            echo "Pushing frontend Docker image..."
+                            sh "docker tag michaeladegoke/frontend-service:${VERSION_TAG} michaeladegoke/frontend-service:latest"
+                            sh "docker push michaeladegoke/frontend-service:latest"
                         }
                     }
                 }
             }
-        }    
+        }
+        //  stage('Build and Push MyFristDemoWithSpring Docker Image') {
+        //     steps {
+        //         script {
+        //             withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+        //                 dir('MyFristDemoWithSpring') { // Fixed directory name
+        //                     echo "Building backend Docker image..."
+                            
+        //                     // Build the Docker image with the correct DockerHub username
+        //                     sh 'docker build -t michaeladegoke/my_java_app:latest .'
+                            
+        //                     echo "Logging in to DockerHub..."
+        //                     sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
+                            
+        //                     echo "Pushing backend Docker image..."
+        //                     sh "docker push michaeladegoke/my_java_app:latest"
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }    
     }
 
     post {
