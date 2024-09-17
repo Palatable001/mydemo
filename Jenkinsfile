@@ -30,7 +30,7 @@ pipeline {
                         dir('MyFristDemoWithSpring') {
                             echo "Building backend Docker image..."
                             // Ensure the target folder is present
-                            sh 'ls -al MyFristDemoWithSpring/target/'
+                            sh 'ls -al MyFristDemoWithSpring/MyFirstDemoWithSpring/target/'
                             
                             sh 'docker build -t palatable001/my_java_app:latest .'
                             
