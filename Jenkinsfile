@@ -101,7 +101,7 @@ pipeline {
 
     environment {
         GIT_URL = 'https://github.com/Palatable001/mydemo.git/'
-        BACKEND_DIR = 'MyFirstDemoWithSpring'
+        BACKEND_DIR = 'MyFristDemoWithSpring'
         FRONTEND_DIR = 'frontend'
         GIT_CREDENTIALS = 'Github-credentials'
         DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'
@@ -151,11 +151,11 @@ pipeline {
     //             }
     //         }
     //     }
-         stage('Build and Push MyFirstDemoWithSpring Docker Image') {
+         stage('Build and Push MyFristDemoWithSpring Docker Image') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                        dir('MyFirstDemoWithSpring') { // Fixed directory name
+                        dir('MyFristDemoWithSpring') { // Fixed directory name
                             echo "Building backend Docker image..."
                             
                             // Build the Docker image with the correct DockerHub username
