@@ -10,18 +10,18 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS}", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    git credentialsId: "${GIT_CREDENTIALS}", url: GIT_URL
-                }
-                // Add echo to check GIT_COMMIT and VERSION_TAG
-                script {
-                    echo "GIT_COMMIT: ${GIT_COMMIT}"
-                    echo "VERSION_TAG: ${VERSION_TAG}"
-                }
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS}", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+        //             git credentialsId: "${GIT_CREDENTIALS}", url: GIT_URL
+        //         }
+        //         // Add echo to check GIT_COMMIT and VERSION_TAG
+        //         script {
+        //             echo "GIT_COMMIT: ${GIT_COMMIT}"
+        //             echo "VERSION_TAG: ${VERSION_TAG}"
+        //         }
+        //     }
+        // }
 
         stage('Build and Push MyFirstDemoWithSpring Docker Image') {
             steps {
