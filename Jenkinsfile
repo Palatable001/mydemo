@@ -154,11 +154,10 @@ pipeline {
             }
         }    
     }
-    
+
     stage('Deploy to GKE') {
         steps {
             script {
-
                 echo "Deploying to GKE..."
                 sh '''
                     kubectl apply -f deployment.yaml
