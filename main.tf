@@ -1,7 +1,7 @@
 provider "google" {
   project = "mike-428601"
-  region  = "us-west1"
-  zone    = "us-west1-a"
+  region  = "us-central1"
+  zone    = "us-central1-a"
 }
 
 resource "google_project_iam_member" "sa-iam" {
@@ -12,7 +12,7 @@ resource "google_project_iam_member" "sa-iam" {
 
 resource "google_container_cluster" "primary" {
   name               = "terraform-cluster"
-  location           = "us-west1-a"
+  location           = "us-central1-a"
   initial_node_count = 3
   deletion_protection = false
 
