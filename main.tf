@@ -13,7 +13,7 @@ resource "google_project_iam_member" "sa-iam" {
 resource "google_container_cluster" "primary" {
   name               = "terraform-cluster"
   location           = "us-west1-a"
-  initial_node_count = 2
+  initial_node_count = 3
   deletion_protection = false
 
   node_config {
